@@ -1,0 +1,3 @@
+include ':djlibrary'
+include ':app'
+rootProject.name = "dj-library"
