@@ -1,10 +1,12 @@
 package cn.djzhao.library.demo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import cn.djzhao.library.R
 import cn.djzhao.library.log.DJLog
+import cn.djzhao.library.log.DJLogConfig
+import cn.djzhao.library.log.DJLogType
 import kotlinx.android.synthetic.main.activity_d_j_log_demo.*
 
 class DJLogDemoActivity : AppCompatActivity() {
@@ -18,6 +20,16 @@ class DJLogDemoActivity : AppCompatActivity() {
     }
 
     private fun printLog() {
+        DJLog.log(object : DJLogConfig() {
+            override fun includeThread(): Boolean {
+                return true
+            }
+
+            override fun stackTraceDepth(): Int {
+                return 0
+            }
+        }, DJLogType.E, "DDDJJJ", "Custom Log")
         DJLog.a("Hello DJLog")
+        Log.println(Log.ERROR, "tag", "message")
     }
 }

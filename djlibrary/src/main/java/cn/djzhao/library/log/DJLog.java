@@ -4,6 +4,10 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Level;
+
 /**
  * log系统
  * 1. 打印堆栈信息
@@ -11,6 +15,14 @@ import androidx.annotation.NonNull;
  * 3. 模拟控制台
  */
 public class DJLog {
+
+    private static final String DJ_LOG_PACKAGE;
+
+    static {
+        String className = DJLog.class.getName();
+        DJ_LOG_PACKAGE = className.substring(0, className.lastIndexOf('.'));
+    }
+
     public static void v(Object... contents) {
         log(DJLogType.V, contents);
     }
@@ -72,13 +84,35 @@ public class DJLog {
             return;
         }
         StringBuilder stringBuilder = new StringBuilder();
-        String body = parseBody(contents);
+        if (config.includeThread()) {
+            stringBuilder.append(DJLogConfig.DJ_THREAD_FORMATTER.format(Thread.currentThread()))
+                    .append("\n");
+        }
+        if (config.stackTraceDepth() > 0) {
+            stringBuilder.append(DJLogConfig.DJ_STACK_TRACE_FORMATTER.format(DJStackTraceUtil.trimStackTrace(new Throwable().getStackTrace(), DJ_LOG_PACKAGE, config.stackTraceDepth())))
+                    .append("\n");
+        }
+        List<DJLogPrinter> printers;
+        if (config.printers() != null) {
+            printers = Arrays.asList(config.printers());
+        } else {
+            printers = DJLogManger.getInstance().getPrinters();
+        }
+        if (printers == null) {
+            return;
+        }
+        String body = parseBody(config, contents);
         stringBuilder.append(body);
-        Log.println(type, tag, stringBuilder.toString());
+        for (DJLogPrinter printer : printers) {
+            printer.print(config, type, tag, stringBuilder.toString());
+        }
     }
 
-    public static String parseBody(@NonNull Object[] contents) {
+    public static String parseBody(DJLogConfig config, @NonNull Object[] contents) {
         StringBuilder stringBuilder = new StringBuilder();
+        if (config.injectJsonParser() != null) {
+            return config.injectJsonParser().toJson(contents);
+        }
         for (Object content : contents) {
             stringBuilder.append(content.toString()).append(":");
         }
