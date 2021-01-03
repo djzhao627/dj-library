@@ -19,8 +19,11 @@ class DJLogDemoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_d_j_log_demo)
+
+        // 屏幕日志输出
         screenPrinter = DJScreenPrinter(this)
         screenPrinter.printerProvider.showFloatingView()
+        DJLogManger.getInstance().addPrinter(screenPrinter)
 
         button.setOnClickListener {
             printLog()
@@ -28,9 +31,9 @@ class DJLogDemoActivity : AppCompatActivity() {
     }
 
     private fun printLog() {
-        DJLogManger.getInstance().addPrinter(screenPrinter)
-        DJLogManger.getInstance()
-            .addPrinter(DJFilePrinter.getInstance(externalCacheDir?.absolutePath, 0))
+        DJLog.a("Hello DJLog")
+
+        // 自定义
         DJLog.log(object : DJLogConfig() {
             override fun includeThread(): Boolean {
                 return true
@@ -40,6 +43,5 @@ class DJLogDemoActivity : AppCompatActivity() {
                 return 0
             }
         }, DJLogType.E, "DDDJJJ", "Custom Log")
-        DJLog.a("Hello DJLog")
     }
 }
