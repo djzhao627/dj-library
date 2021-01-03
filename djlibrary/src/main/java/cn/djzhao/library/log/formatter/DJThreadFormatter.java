@@ -1,4 +1,4 @@
-package cn.djzhao.library.log;
+package cn.djzhao.library.log.formatter;
 
 /**
  * 线程格式化器

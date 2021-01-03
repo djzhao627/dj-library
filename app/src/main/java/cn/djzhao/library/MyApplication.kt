@@ -1,9 +1,10 @@
 package cn.djzhao.library
 
 import android.app.Application
-import cn.djzhao.library.log.DJConsolePrinter
 import cn.djzhao.library.log.DJLogConfig
+import cn.djzhao.library.log.DJLogConfig.JsonParser
 import cn.djzhao.library.log.DJLogManger
+import cn.djzhao.library.log.printer.DJConsolePrinter
 import com.google.gson.Gson
 
 class MyApplication : Application() {
@@ -17,11 +18,19 @@ class MyApplication : Application() {
             }
 
             override fun getGlobalTag(): String {
-                return "Hello DJLog"
+                return "DJLog"
             }
 
             override fun enable(): Boolean {
                 return true
+            }
+
+            override fun includeThread(): Boolean {
+                return true
+            }
+
+            override fun stackTraceDepth(): Int {
+                return 5
             }
         }, DJConsolePrinter())
     }

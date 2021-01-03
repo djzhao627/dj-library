@@ -1,6 +1,8 @@
-package cn.djzhao.library.log;
+package cn.djzhao.library.log.printer;
 
 import androidx.annotation.NonNull;
+
+import cn.djzhao.library.log.DJLogConfig;
 
 /**
  * 日志打印接口

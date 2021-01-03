@@ -9,14 +9,14 @@ import java.util.Locale;
  * @author djzhao
  * @date 21/01/02
  */
-public class DJLogMo {
+public class DJLogModel {
     private static SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss", Locale.CHINA);
     private long timeMillis;
     private int level;
     private String tag;
     private String message;
 
-    public DJLogMo(long timeMillis, int level, String tag, String message) {
+    public DJLogModel(long timeMillis, int level, String tag, String message) {
         this.timeMillis = timeMillis;
         this.level = level;
         this.tag = tag;

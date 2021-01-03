@@ -1,4 +1,4 @@
-package cn.djzhao.library.log;
+package cn.djzhao.library.log.formatter;
 
 /**
  * 日志格式化接口

@@ -1,4 +1,4 @@
-package cn.djzhao.library.log;
+package cn.djzhao.library.log.printer;
 
 import android.app.Activity;
 import android.os.SystemClock;
@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.djzhao.library.R;
+import cn.djzhao.library.log.DJLogConfig;
+import cn.djzhao.library.log.DJLogModel;
+import cn.djzhao.library.log.DJLogType;
 
 /**
  * log日志的屏幕打印器(显示在界面上)
@@ -52,7 +55,7 @@ public class DJScreenPrinter implements DJLogPrinter {
     @Override
     public void print(@NonNull DJLogConfig config, int level, String tag, @NonNull String message) {
         // 将log展示到recyclerView
-        DJLogMo logMo = new DJLogMo(SystemClock.currentThreadTimeMillis(), level, tag, message);
+        DJLogModel logMo = new DJLogModel(System.currentTimeMillis(), level, tag, message);
         adapter.addItem(logMo);
         // 滚动视图位置
         recyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);
@@ -61,13 +64,13 @@ public class DJScreenPrinter implements DJLogPrinter {
     private static class LogAdapter extends RecyclerView.Adapter<LogAdapter.LogViewHolder> {
 
         private LayoutInflater inflater;
-        private List<DJLogMo> logs = new ArrayList<>();
+        private List<DJLogModel> logs = new ArrayList<>();
 
         public LogAdapter(LayoutInflater inflater) {
             this.inflater = inflater;
         }
 
-        public void addItem(DJLogMo logMo) {
+        public void addItem(DJLogModel logMo) {
             logs.add(logMo);
             notifyItemChanged(logs.size() - 1);
         }
@@ -81,7 +84,7 @@ public class DJScreenPrinter implements DJLogPrinter {
 
         @Override
         public void onBindViewHolder(@NonNull LogViewHolder holder, int position) {
-            DJLogMo logItem = logs.get(position);
+            DJLogModel logItem = logs.get(position);
             int color = getHighlightColor(logItem.getLevel());
             holder.tagView.setTextColor(color);
             holder.messageView.setTextColor(color);

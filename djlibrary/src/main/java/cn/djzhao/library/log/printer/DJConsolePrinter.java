@@ -1,10 +1,13 @@
-package cn.djzhao.library.log;
+package cn.djzhao.library.log.printer;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import cn.djzhao.library.log.DJLogConfig;
+
 import static cn.djzhao.library.log.DJLogConfig.MAX_LINE_LENGTH;
+
 
 /**
  * 控制台打印器

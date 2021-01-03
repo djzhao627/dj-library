@@ -1,5 +1,9 @@
 package cn.djzhao.library.log;
 
+import cn.djzhao.library.log.formatter.DJStackTraceFormatter;
+import cn.djzhao.library.log.formatter.DJThreadFormatter;
+import cn.djzhao.library.log.printer.DJLogPrinter;
+
 /**
  * DJLog配置信息
  */
@@ -8,7 +12,7 @@ public abstract class DJLogConfig {
     /**
      * 每行最大长度
      */
-    static int MAX_LINE_LENGTH = 512;
+    public static int MAX_LINE_LENGTH = 512;
 
     static DJThreadFormatter DJ_THREAD_FORMATTER = new DJThreadFormatter();
     static DJStackTraceFormatter DJ_STACK_TRACE_FORMATTER = new DJStackTraceFormatter();
