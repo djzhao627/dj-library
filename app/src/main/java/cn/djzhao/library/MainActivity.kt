@@ -6,13 +6,14 @@ import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import cn.djzhao.common.ui.component.DJBaseActivity
 import cn.djzhao.library.demo.DJLogDemoActivity
 import cn.djzhao.library.demo.tab.DJTabBottomDemoActivity
 import cn.djzhao.ui.tab.bottom.DJTabBottom
 import cn.djzhao.ui.tab.bottom.DJTabBottomInfo
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : DJBaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

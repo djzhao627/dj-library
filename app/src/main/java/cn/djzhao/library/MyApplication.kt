@@ -1,15 +1,14 @@
 package cn.djzhao.library
 
-import android.app.Application
+import cn.djzhao.common.ui.component.DJBaseApplication
 import cn.djzhao.library.log.DJLogConfig
 import cn.djzhao.library.log.DJLogConfig.JsonParser
 import cn.djzhao.library.log.DJLogManger
 import cn.djzhao.library.log.printer.DJConsolePrinter
 import cn.djzhao.library.log.printer.DJFilePrinter
-import cn.djzhao.library.log.printer.DJLogPrinter
 import com.google.gson.Gson
 
-class MyApplication : Application() {
+class MyApplication : DJBaseApplication() {
     override fun onCreate() {
         super.onCreate()
         DJLogManger.init(

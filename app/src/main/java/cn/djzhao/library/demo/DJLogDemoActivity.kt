@@ -1,7 +1,7 @@
 package cn.djzhao.library.demo
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import cn.djzhao.common.ui.component.DJBaseActivity
 import cn.djzhao.library.R
 import cn.djzhao.library.log.DJLog
 import cn.djzhao.library.log.DJLogConfig
@@ -11,7 +11,7 @@ import cn.djzhao.library.log.printer.DJFilePrinter
 import cn.djzhao.library.log.printer.DJScreenPrinter
 import kotlinx.android.synthetic.main.activity_d_j_log_demo.*
 
-class DJLogDemoActivity : AppCompatActivity() {
+class DJLogDemoActivity : DJBaseActivity() {
 
     lateinit var screenPrinter: DJScreenPrinter
     lateinit var filePrinter: DJFilePrinter
