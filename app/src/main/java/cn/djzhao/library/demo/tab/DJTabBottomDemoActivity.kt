@@ -4,18 +4,29 @@ import android.os.Bundle
 import android.widget.Toast
 import cn.djzhao.common.ui.component.DJBaseActivity
 import cn.djzhao.library.R
+import cn.djzhao.library.demo.logic.DJTabBottomDemoActivityLogic
 import cn.djzhao.library.utils.DJDisplayUtil
 import cn.djzhao.ui.tab.bottom.DJTabBottomInfo
 import cn.djzhao.ui.tab.bottom.DJTabBottomLayout
 import kotlinx.android.synthetic.main.activity_dj_tab_bottom_demo.*
 import java.util.*
 
-class DJTabBottomDemoActivity : DJBaseActivity() {
+class DJTabBottomDemoActivity : DJBaseActivity(), DJTabBottomDemoActivityLogic.ActivityProvider {
+
+    lateinit var activityLogic: DJTabBottomDemoActivityLogic
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dj_tab_bottom_demo)
 
-        initTablayout();
+        activityLogic = DJTabBottomDemoActivityLogic(this, savedInstanceState)
+
+        // initTablayout();
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        activityLogic.saveInstanceState(outState)
     }
 
     private fun initTablayout() {

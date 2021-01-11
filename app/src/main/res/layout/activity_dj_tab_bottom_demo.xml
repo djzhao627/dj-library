@@ -2,102 +2,14 @@
 <cn.djzhao.ui.tab.bottom.DJTabBottomLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/djTabLayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".demo.tab.DJTabBottomDemoActivity">
 
-    <ScrollView
+    <cn.djzhao.common.tab.DJFragmentTabView
+        android:id="@+id/fragment_tab_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginBottom="20dp"
-                android:background="#96c"
-                android:gravity="center"
-                android:text="DJTabBottom"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginBottom="20dp"
-                android:background="#96c"
-                android:gravity="center"
-                android:text="DJTabBottom"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginBottom="20dp"
-                android:background="#96c"
-                android:gravity="center"
-                android:text="DJTabBottom"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginBottom="20dp"
-                android:background="#96c"
-                android:gravity="center"
-                android:text="DJTabBottom"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginBottom="20dp"
-                android:background="#96c"
-                android:gravity="center"
-                android:text="DJTabBottom"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginBottom="20dp"
-                android:background="#96c"
-                android:gravity="center"
-                android:text="DJTabBottom"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginBottom="20dp"
-                android:background="#96c"
-                android:gravity="center"
-                android:text="DJTabBottom"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginBottom="20dp"
-                android:background="#96c"
-                android:gravity="center"
-                android:text="DJTabBottom"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-    </ScrollView>
+        android:layout_height="match_parent" />
 
 </cn.djzhao.ui.tab.bottom.DJTabBottomLayout>
